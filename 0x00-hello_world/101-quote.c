@@ -11,6 +11,6 @@ int main(void)
 	int messageLength = 59;
 
 	write(1, message, messageLength);
-	return (0);
+	return (1);
 }
 
