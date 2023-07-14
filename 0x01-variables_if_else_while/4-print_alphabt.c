@@ -11,11 +11,11 @@ int main(void)
 	{
 		if (missing != 'q' && missing != 'e')
 		{
-			putchare(missing);
+			putchar(missing);
 		}
 	}
 
-	putchar ('\n');
+	putchar('\n');
 	return (0);
 }
 
