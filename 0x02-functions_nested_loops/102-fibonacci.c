@@ -8,7 +8,7 @@ void print_fibonacci(int n)
 	unsigned long oldsum = 1, currentSum = 1, newsum;
 	int i;
 
-	for (i = 1; i < n; i++)
+	for (i = 1; i <= n; i++)
 	{
 		printf("%lu, ", currentSum);
 		newsum = currentSum + oldsum;
