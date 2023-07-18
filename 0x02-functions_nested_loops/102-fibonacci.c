@@ -5,13 +5,14 @@
  */
 void print_fibonacci(int n)
 {
-	unsigned long oldsum = 1, currentSum = 2, newsum;
+	unsigned long oldsum = 0, currentSum = 1, newsum;
 	int i;
 
 	for (i = 1; i < n; i++)
 	{
-		printf("%lu, ", currentSum);
 		newsum = currentSum + oldsum;
+		printf("%lu, ", currentSum);
+
 		oldsum = currentSum;
 		currentSum = newsum;
 	}
