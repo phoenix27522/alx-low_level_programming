@@ -1,27 +1,37 @@
 #include "main.h"
 /**
- * 9-times_table - print out times table of nine
+ * times_table - print out times table of nine
  * Return: the multiplication table in square format
  */
 void times_table(void)
 {
-	int i, j;
-	int count = 0;
+	int i, j, k;
 
 	for (i = 0; i < 10; i++)
 	{
 		for (j = 0; j < 10; j++)
 		{
-			int result = i * j;
-
-			_putchar('0' + result);
-			_putchar(',');
-			_putchar(' ');
-
-			if (count % 9 == 0)
+			k = j * i;
+			if (j == 0)
 			{
-				_putchar('\n');
+				_putchar(k + '0');
+			}
+
+			if (k < 10 && j != 0)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar(k + '0');
+			} else if (k >= 10)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar((k / 10) + '0');
+				_putchar((k % 10) + '0');
 			}
 		}
+		_putchar('\n');
 	}
 }
+
