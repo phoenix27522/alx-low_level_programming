@@ -10,12 +10,15 @@ void print_fibonacci(int n)
 
 	for (i = 1; i <= n; i++)
 	{
-		printf("%lu, ", currentSum);
+		printf("%lu", currentSum);
 		newsum = currentSum + oldsum;
 		oldsum = currentSum;
 		currentSum = newsum;
+		if (i == 50)
+			printf("\n");
+		else 
+			printf(", ");
 	}
-	printf("\n");
 }
 /**
  * main - prints the first 50 fibonacchi numbers
