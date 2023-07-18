@@ -16,7 +16,7 @@ void print_fibonacci(int n)
 		currentSum = newsum;
 		if (i == 50)
 			printf("\n");
-		else 
+		else
 			printf(", ");
 	}
 }
