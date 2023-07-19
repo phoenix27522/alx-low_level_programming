@@ -1,74 +1,50 @@
 #include <stdio.h>
 
 /**
- * nLength - returns the length of string
+ * main - Prints the first 98 Fibonacci numbers, starting with 1&2
  *
- * @n: number
- *
- * Return: number of digits
-*/
-
-int numLength(int num)
-{
-	int length = 0;
-
-	if (!num)
-		return (1);
-
-	while (num)
-	{
-		num = num / 10;
-		length += 1;
-	}
-
-	return (length);
-}
-
-/**
- * main - Entry point
- *
- * Description: prints the first 98 Fibonacci numbers
- *	starting with 1 and 2 followed by a new line
- *
- *	Solution was copied from Nobert Patrick
- *	Wise, github handle: Trikcode and got it from iAmG-r00t
- *	puerly for correction purpose to be used after working on it 
- *	untill 5am on the morning 
- *
- * Return: Always 0 (Success)
-*/
-
+ * Return: Always 0.
+ */
 int main(void)
 {
-	int count, initial0s;
-	unsigned long f1 = 1, f2 = 2, sum, mx = 100000000, f1o = 0, f2o = 0, sumo = 0;
+	int count;
+	unsigned long sum1 = 0, sum2 = 1, sum;
+	unsigned long sum1_new1, sum1_new2, sum2_new1, sum2_new2;
+	unsigned long new1, new2;
 
-	for (count = 1; count <= 98; ++count)
+	for (count = 0; count < 92; count++)
 	{
-		if (f1o > 0)
-			printf("%lu", f1o);
-		initial0s = numLength(mx) - 1 - numLength(f1);
+		sum = sum1 + sum2;
+		printf("%lu, ", sum);
 
-		while (f1o > 0 && initial0s > 0)
-		{
-			printf("%d", 0);
-			--initial0s;
-		}
-
-		printf("%lu", f1);
-
-		sum = (f1 + f2) % mx;
-		sumo = f1o + f2o + (f1 + f2) / mx;
-		f1 = f2;
-		f1o = f2o;
-		f2 = sum;
-		f2o = sumo;
-
-		if (count != 98)
-			printf(", ");
-		else
-			printf("\n");
+		sum1 = sum2;
+		sum2 = sum;
 	}
 
+	sum1_new1 = sum1 / 10000000000;
+	sum2_new1 = sum2 / 10000000000;
+	sum1_new2 = sum1 % 10000000000;
+	sum2_new2 = sum2 % 10000000000;
+
+	for (count = 93; count < 99; count++)
+	{
+		new1 = sum1_new1 + sum2_new1;
+		new2 = sum1_new2 + sum2_new2;
+		if (sum1_new2 + sum2_new2 > 9999999999)
+		{
+			new1 += 1;
+			new2 %= 10000000000;
+		}
+
+		printf("%lu%lu", new1, new2);
+		if (count != 98)
+			printf(", ");
+
+		sum1_new1 = sum2_new1;
+		sum1_new2 = sum2_new2;
+		sum2_new1 = new1;
+		sum2_new2 = new2;
+	}
+	printf("\n");
 	return (0);
 }
