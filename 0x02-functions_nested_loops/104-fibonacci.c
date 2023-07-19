@@ -12,7 +12,7 @@ int main(void)
 	for (count = 2; count < 98; count++)
 	{
 		newsum = currentSum + oldsum;
-		printf("%lu", newsum);
+		printf(", %lu", newsum);
 
 		oldsum = currentSum;
 		currentSum = newsum;
