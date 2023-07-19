@@ -16,7 +16,7 @@ void print_fibonacci(void)
 
 		count++;
 
-		if (count < 98)
+		if (count != 98)
 			printf(", ");
 		else
 			printf("\n");
