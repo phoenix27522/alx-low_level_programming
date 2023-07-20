@@ -20,4 +20,12 @@
 ## must multiply two digit and print the answer
      *** multiplying a and b
                @ using operator * we multiply a and b
-               
+
+
+==========> a function that prints the numbers, from 0 to 9, <==========
+==========>          followed bya new line                   <==========
+## must print from 0 to 9 in new line 
+     *** problem one --> how to print from 0 to 9
+               @ using forloop (i = 0; i < 10; i++) this will help 
+                 itrate the number from 0 by incrementing it  to 9
+
