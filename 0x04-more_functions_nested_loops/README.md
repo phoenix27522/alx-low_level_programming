@@ -29,3 +29,8 @@
                @ using forloop (i = 0; i < 10; i++) this will help 
                  itrate the number from 0 by incrementing it  to 9
 
+==========> The same as above but not print 2 and 4 <==========
+## must print  the numbers, from 0 to 9 but not 2 and 4 
+     *** problem one --> how to leave out 2 and 4
+               @ the same forloop as the above but we add if condition                   to ommit 2 and 4 ( i == 2 && i == 4)
+
