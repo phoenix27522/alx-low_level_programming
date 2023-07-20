@@ -50,3 +50,6 @@
                @ the length of the line is as long as the n
                @ if the vale 0 it prints new line 
 
+==========>  a function that draws a diagonal line on the terminal <====
+## must print diagonal line
+     *** 
