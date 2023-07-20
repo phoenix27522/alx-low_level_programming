@@ -41,6 +41,7 @@
                @ using nested forloop the first itrates from 1 to 10
                @ every time it reach 10 print new line
                @ the second itrates from 0 to 14
+               @ coz of putchar use % / not confuse 10 and > as ascii
 
 ==========> a function that draws a straight line in the terminal <=====
 ## must print striaght line 
@@ -52,4 +53,16 @@
 
 ==========>  a function that draws a diagonal line on the terminal <====
 ## must print diagonal line
-     *** 
+     *** problem one how to make in digonal
+               @ second using if elseput the empty space using forloop
+               @ second the digonal also ...
+               @ if j == i \
+               @ if j < i ' '  
+
+
+==========> a function that prints a square, followed by a new line <===
+## must print n by n of #
+     *** the same as from "0 to 14 followed by new line 10x"
+         only to be change by n of # by n new line 
+
+
