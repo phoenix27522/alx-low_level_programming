@@ -65,4 +65,10 @@
      *** the same as from "0 to 14 followed by new line 10x"
          only to be change by n of # by n new line 
 
-
+==========> Fizz-Buzz <==========
+## must print the numbers from 1 to 100, followed by a new line. But for multiples of three print Fizz instead of the number and for the multiples of five print Buzz.
+     *** problem one --> how to print 0 to 100
+               @ using forloop (i = 0; i <= 100; i++)
+     *** problem two --> how to print fizz and buzz
+               @ using if else 
+               @ if % 3 == 0 print fizz and else if % 5 == 0 print buzz     
