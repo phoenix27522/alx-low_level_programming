@@ -1,25 +1,16 @@
 #include "main.h"
 /**
- * print_line - print nx of _
- * Return: void
- * @n: number of _ to be printed
+ * print_line - draws straight line
+ * @n: number of times of line
+ * Return: 0
  */
 void print_line(int n)
 {
 	int i;
 
-	if (n == 0)
+	for (i = 0; i < n; i++)
 	{
-		_putchar('\n');
+		_putchar('_');
 	}
-	else
-	{
-
-		for (i = 0; i < n; i++)
-		{
-			_putchar('_');
-		}
-	}
-
 	_putchar('\n');
 }
