@@ -41,3 +41,12 @@
                @ using nested forloop the first itrates from 1 to 10
                @ every time it reach 10 print new line
                @ the second itrates from 0 to 14
+
+==========> a function that draws a straight line in the terminal <=====
+## must print striaght line 
+     *** it is the same as the pervious
+               @ it prints _ every time it itrates 
+               @ for(i = 0; i < n; i++) 
+               @ the length of the line is as long as the n
+               @ if the vale 0 it prints new line 
+
