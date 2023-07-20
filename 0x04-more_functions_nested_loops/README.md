@@ -13,3 +13,11 @@
 ## must rturn 1 if it is digit and 0 otherwise
      *** the same logic as the above 
                @if it digit print 1 else print 0
+
+
+
+==========> a function that multiplies two integers <==========
+## must multiply two digit and print the answer
+     *** multiplying a and b
+               @ using operator * we multiply a and b
+               
