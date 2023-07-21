@@ -18,7 +18,7 @@ int largest_prime_factor(unsigned long int num)
 
 	for (i = 3; i <= num; i = i + 2)
 	{
-		while ((num % i == 0) && (num != i))
+		while (num % i == 0)
 		{
 			largest = i;
 
