@@ -5,7 +5,7 @@
  * @s1: char input wich is pointer.
  * @s2: char input which is pointer.
  * @indx1: s1 index.
- * @indx2: s2 index. 
+ * @indx2: s2 index.
  * Return: 1 if s is palindrome, 0 otherwise.
  */
 int str_checker(char *s1, char *s2, int indx1, int indx2)
