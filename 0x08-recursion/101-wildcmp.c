@@ -17,7 +17,8 @@ int str_checker(char *s1, char *s2, int indx1, int indx2)
 	if (s1[indx1] == '\0' && s2[indx2] == '*')
 		return (str_checker(s1, s2, indx1, indx2 + 1));
 	if (s2[indx2] == '*')
-		return (str_checker(s1, s2, indx1 + 1, indx2) || str_checker(s1, s2, indx1, indx2 + 1));
+		return (str_checker(s1, s2, indx1 + 1, indx2) ||
+		str_checker(s1, s2, indx1, indx2 + 1));
 	return (0);
 }
 /**
