@@ -90,8 +90,6 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		
-
 		for (j = 0; j < _strlen(argv[i]); j++)
 		{
 			if (_isdigit(argv[i][j]) == 0)
@@ -100,14 +98,13 @@ int main(int argc, char *argv[])
 
 				return (1);
 			}
-		
 		}
 
-		num = _atoi (argv[i]);
+		num = _atoi(argv[i]);
 
 		sum = sum + num;
 	}
 	printf("%d\n", sum);
-	
+
 	return (0);
 }
