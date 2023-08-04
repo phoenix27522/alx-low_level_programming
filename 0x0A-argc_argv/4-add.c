@@ -70,9 +70,9 @@ int _strlen(char *s)
  * Return: is int 0 or 1
  */
 
-int _isdigit(char *c)
+int _isdigit(char c)
 {
-	if (*c >= '0' && *c <= '9')
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
@@ -88,22 +88,26 @@ int main(int argc, char *argv[])
 	int sum = 0;
 	int i, j, num;
 
-	for (i = 0; i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
 		
 
 		for (j = 0; j < _strlen(argv[i]); j++)
 		{
 			if (_isdigit(argv[i][j]) == 0)
+			{
 				printf("Error\n");
-		}
+
+				return (1);
+			}
 		
+		}
+
 		num = _atoi (argv[i]);
 
 		sum = sum + num;
-
-		printf("%d\n", sum);
 	}
-
+	printf("%d\n", sum);
+	
 	return (0);
 }
