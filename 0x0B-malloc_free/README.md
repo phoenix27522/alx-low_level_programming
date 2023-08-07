@@ -41,3 +41,20 @@ Inside the function {
 # step -7. Loop to initialize each element of the matrix to 0:
 # step -8. return (arr);: Returns the pointer arr, pointing to the created and initialized matrix.
 
+}
+
+
+==========> function that frees a 2 dimensional grid previously created by your alloc_grid function <==========
+void free_grid(int **grid, int height): This is function definition. it takes two parameters:
+grid:   grid to free
+height: height of the grid
+
+Inside the function {
+
+# step -1. int i;: This declares a loop variable i that will be used to iterate through the rows of the grid.
+# step -2. if (grid == NULL || height == 0) return;: This checks if either the grid pointer is NULL or the height is 0. If either of these                     conditions is met, the function returns immediately without attempting to free any memory.
+# step -4. for (i = 0; i < height; i++): This loop iterates through each row of the grid.
+# step -5. free(grid[i]);: Inside the loop, this line of code frees the memory for each individual row of the grid.
+# step -6. free(grid);: After the loop, this line of code frees the memory allocated for the array of row pointers, effectively releasing the entire           memory allocated by the alloc-grid function.
+
+}
