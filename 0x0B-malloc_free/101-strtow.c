@@ -15,12 +15,12 @@ int wordcount(char *str)
 
 	while (*str != '\0')
 	{
-		/*skip spaces*/
+		
 		if (*str == ' ')
 			str++;
 		else
 		{
-			/*count words*/
+			
 			while (*str != ' ' && *str != '\0')
 				str++;
 			words++;
@@ -68,7 +68,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	str_l = wordcount(str);
-	/*return null if str_l == 0 || new == NULL*/
+	
 	string = malloc((str_l + 1) * sizeof(char *));
 	if (str_l == 0 || string == NULL)
 		return (NULL);
