@@ -26,7 +26,6 @@ char *argstostr(int ac, char **av)
 		}
 		i++;
 	}
-
 	count = count + ac + 1;
 
 	arg = (char *)malloc(sizeof(char) * count);
@@ -48,6 +47,5 @@ char *argstostr(int ac, char **av)
 		arg[c] = '\n';
 		c++;
 	}
-
 	return (arg);
 }
