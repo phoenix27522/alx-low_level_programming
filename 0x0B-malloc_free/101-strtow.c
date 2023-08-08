@@ -1,101 +1,118 @@
+#include "main.h"
 #include <stdlib.h>
+int word_len(char *str);
+int count_words(char *str);
+char **strtow(char *str);
+void ch_free_grid(char **grid, unsigned int height);
 
 /**
- * wordcount - get word count from string
- *             without spaces
+ * ch_free_grid - frees a 2 dimensional array.
+ * @grid: multidimensional array of char.
+ * @height: height of the array.
  *
- * @str: string to count words present
- *
- * Return: The number of words
-*/
-
-int wordcount(char *str)
+ * Return: no return
+ */
+void ch_free_grid(char **grid, unsigned int height)
 {
-	int words = 0;
-
-	while (*str != '\0')
+	if (grid != NULL && height != 0)
 	{
-		
-		if (*str == ' ')
-			str++;
-		else
+		for (; height > 0; height--)
+			free(grid[height]);
+		free(grid[height]);
+		free(grid);
+	}
+}
+
+/**
+ * word_len - Locates the index marking the end of the
+ *            first word contained within a string.
+ * @str: The string to be searched.
+ *
+ * Return: The index marking the end of the initial word pointed to by str.
+ */
+int word_len(char *str)
+{
+	int index = 0, len = 0;
+
+	while (*(str + index) && *(str + index) != ' ')
+	{
+		len++;
+		index++;
+	}
+
+	return (len);
+}
+
+/**
+ * count_words - Counts the number of words contained within a string.
+ * @str: The string to be searched.
+ *
+ * Return: The number of words contained within str.
+ */
+int count_words(char *str)
+{
+	int index = 0, words = 0, len = 0;
+
+	for (index = 0; *(str + index); index++)
+		len++;
+
+	for (index = 0; index < len; index++)
+	{
+		if (*(str + index) != ' ')
 		{
-			
-			while (*str != ' ' && *str != '\0')
-				str++;
 			words++;
+			index += word_len(str + index);
 		}
 	}
+
 	return (words);
 }
 
 /**
- * free_array - free arr[i]
+ * strtow - Splits a string into words.
+ * @str: The string to be split.
  *
- * @ar: array to free
- * @i: array[i]
- *
- * Return: nothing
-*/
-
-void free_array(char **ar, int i)
-{
-	if (ar != NULL && i != 0)
-	{
-		while (i >= 0)
-		{
-			free(ar[i]);
-			i--;
-		}
-		free(ar);
-	}
-}
-
-/**
- * strtow - split a string to words
- *
- * @str: string to split.
- *
- * Return: NULL if it fails
-*/
-
+ * Return: If str = NULL, str = "", or the function fails - NULL.
+ *         Otherwise - a pointer to an array of strings (words).
+ */
 char **strtow(char *str)
 {
-	int i, s, j, str_l, word;
-	char **string;
+	char **strings;
+	int index = 0, words, w, letters, l;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
 
-	str_l = wordcount(str);
-	
-	string = malloc((str_l + 1) * sizeof(char *));
-	if (str_l == 0 || string == NULL)
+	words = count_words(str);
+	if (words == 0)
 		return (NULL);
 
-	for (i = s = 0; i < str_l; i++)
+	strings = malloc(sizeof(char *) * (words + 1));
+	if (strings == NULL)
+		return (NULL);
+
+	for (w = 0; w < words; w++)
 	{
-		for (word = s; str[word] != '\0'; word++)
-		{
-			if (str[word] == ' ')
-				s++;
+		while (str[index] == ' ')
+			index++;
 
-			if (str[word] != ' ' && (str[word + 1] == ' ' || str[word + 1] == '\0'))
-			{
-				string[i] = malloc((word - s + 2) * sizeof(char));
-				if (string[i] == NULL)
-				{
-					free_array(string, i);
-					return (NULL);
-				}
-				break;
-			}
+		letters = word_len(str + index);
+
+		strings[w] = malloc(sizeof(char) * (letters + 1));
+
+		if (strings[w] == NULL)
+		{
+			ch_free_grid(strings, w);
+
+			return (NULL);
 		}
 
-		for (j = 0; s <= word; s++, j++)
-			string[i][j] = str[s];
-		string[i][j] = '\0';
+		for (l = 0; l < letters; l++)
+			strings[w][l] = str[index++];
+
+		strings[w][l] = '\0';
 	}
-	string[i] = NULL;
-	return (string);
+	strings[w] = NULL;
+
+	return (strings);
 }
