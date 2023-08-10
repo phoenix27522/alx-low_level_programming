@@ -27,10 +27,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	while (s2[len2] != '\0')
 		len2++;
 	/* limiting the n to size of s2 if n is grater */
-	if (n > len2)
+	if (n >= len2)
 		n = len2;
 
 	concat = (char *)malloc(sizeof(char) * (len1 + n + 1));
+	if (concat == NULL)
+		return (NULL);
 
 	/* storing char s1 to concat*/
 	for (i = 0; i < len1; i++)
