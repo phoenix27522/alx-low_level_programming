@@ -3,77 +3,48 @@
 #include "main.h"
 
 /**
- * _memset - fills memory with a constant byte
- * @s: memory area to be filled
- * @a: char to copy
- * @n: number of times to copy b
- * Return: pointer to the memory area s
+ * is_digit - checks if a string contains a non-digit char
+ * @s: string to be evaluated
+ *
+ * Return: 0 if a non-digit is found, 1 otherwise
  */
-char *_memset(char *s, char a, unsigned int n)
-{
-	unsigned int i;
-
-	for (i = 0; i < n; i++)
-		s[i] = a;
-
-	return (s);
-}
-
-/**
- * _calloc - allocates memory for an array
- * @nmemb: number of elements in the array
- * @size: size of each element
- * Return: pointer to allocated memory
- */
-void *_calloc(unsigned int nmemb, unsigned int size)
-{
-	char *calloc;
-
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-
-	calloc = malloc(size * nmemb);
-
-	if (calloc == NULL)
-		return (NULL);
-
-	_memset(calloc, 0, nmemb * size);
-
-	return (calloc);
-}
-/**
- * _isdigit - retrns 1 if it is digit and 0 if not
- * @c: a int to be checked
- * Return: is int 0 or 1
- */
-
-int _isdigit(char *c)
+int is_digit(char *s)
 {
 	int i = 0;
-	while (c[i])
-	{
-		if (c[i] >= '0' && c[i] <= '9')
-			return (1);
-		i++;
-	}		
-	return (0);
-}
-/**
- * _strlen - prints the length of the string
- * @s: character
- * Return: it return length
- */
 
+	while (s[i])
+	{
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/**
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
+ */
 int _strlen(char *s)
 {
-	int length = 0;
+	int i = 0;
 
-	while (*s != '\0')
+	while (s[i] != '\0')
 	{
-		length++;
-		s++;
+		i++;
 	}
-	return (length);
+	return (i);
+}
+
+/**
+ * errors - handles errors for main
+ */
+void errors(void)
+{
+	printf("Error\n");
+	exit(98);
 }
 
 /**
@@ -85,58 +56,44 @@ int _strlen(char *s)
  */
 int main(int argc, char *argv[])
 {
-	char *num1, *num2, *product;
-	int i, j, len1, len2, *result, len_result, prod, sum, print_started;
+	char *s1, *s2;
+	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
 
-	num1 = argv[1], num2 = argv[2];
-	if (argc != 3 || !_isdigit(num1) || !_isdigit(num2))
+	s1 = argv[1], s2 = argv[2];
+	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
+		errors();
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	len = len1 + len2 + 1;
+	result = malloc(sizeof(int) * len);
+	if (!result)
+		return (1);
+	for (i = 0; i <= len1 + len2; i++)
+		result[i] = 0;
+	for (len1 = len1 - 1; len1 >= 0; len1--)
 	{
-		printf("Error\n");
-		exit(98);
-	}
-
-	len1 = _strlen(num1);
-	len2 = _strlen(num2);
-	len_result = len1 + len2;
-	result = (int *)_calloc(len_result, sizeof(int));
-
-	for (i = len1 - 1; i >= 0; i--)
-	{
-		for (j = len2 - 1; j >= 0; j--)
+		digit1 = s1[len1] - '0';
+		carry = 0;
+		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
 		{
-			prod = (num1[i] - '0') * (num2[j] - '0');
-			sum = prod + result[i + j + 1];
-			result[i + j] += sum / 10;
-			result[i + j + 1] = sum % 10;
+			digit2 = s2[len2] - '0';
+			carry += result[len1 + len2 + 1] + (digit1 * digit2);
+			result[len1 + len2 + 1] = carry % 10;
+			carry /= 10;
 		}
+		if (carry > 0)
+			result[len1 + len2 + 1] += carry;
 	}
-
-	while (len_result > 0 && result[len_result - 1] == 0)
+	for (i = 0; i < len - 1; i++)
 	{
-		len_result--;
+		if (result[i])
+			a = 1;
+		if (a)
+			_putchar(result[i] + '0');
 	}
-	product = (char *)malloc(len_result + 1);
-	print_started = 0;
-
-	for (i = 0; i < len_result; i++)
-	{
-    		if (result[i] != '0') 
-		{
-			print_started = 1;
-		}
-		if (print_started)
-		{
-			product[i] = result[i] + '0';
-			_putchar(product[i]);
-		}
-	}
-	if (!print_started)
-	{
+	if (!a)
 		_putchar('0');
-	}
 	_putchar('\n');
-
 	free(result);
 	return (0);
 }
-
