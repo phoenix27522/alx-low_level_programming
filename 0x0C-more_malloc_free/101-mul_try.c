@@ -84,7 +84,7 @@ int _strlen(char *s)
  */
 int main(int argc, char *argv[])
 {
-	char *num1, *num2, *product;
+	char *num1, *num2; 
 	int i, j, len1, len2, *result, len_result, prod, sum, print_started;
 
 	num1 = argv[1], num2 = argv[2];
@@ -97,10 +97,11 @@ int main(int argc, char *argv[])
 	len1 = _strlen(num1);
 	len2 = _strlen(num2);
 	len_result = len1 + len2 ;
-	result = (int *)_calloc(len_result, sizeof(int));
+	result = (int *)malloc(len_result *sizeof(int));
 
 	for (i = len1 - 1; i >= 0; i--)
 	{
+		result[i] = 0;
 		for (j = len2 - 1; j >= 0; j--)
 		{
 			prod = (num1[i] - '0') * (num2[j] - '0');
@@ -110,23 +111,20 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	while (len_result > 0 && result[len_result - 1] == 0)
-	{
-		len_result--;
-	}
-	product = (char *)malloc(len_result);
+	if (sum > 0)
+		result[len1 + len2 + 1] += sum;
 	print_started = 0;
 
 	for (i = 0; i < len_result ; i++)
 	{
-    		if (result[i] != '0') 
+    		if (result[i]) 
 		{
 			print_started = 1;
 		}
 		if (print_started)
 		{
-			product[len_result - i - 1] = result[i] + '0';
-			_putchar(product[len_result - i - 1]);
+
+			_putchar(result[i] + '0');
 		}
 	}
 	if (!print_started)
