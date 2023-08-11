@@ -119,9 +119,17 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < len_result; i++)
 	{
-		product[i] = result[i] + '0';
-		_putchar(product[i]);
+    		if (product[i] != '0') 
+		{
+			product[i] = result[i] + '0';
+			while (i < len_result) 
+			{
+            			_putchar(product[i]);
+            			i++;
+        		}
+    		}
 	}
+
 	_putchar('\n');
 
 	free(result);
