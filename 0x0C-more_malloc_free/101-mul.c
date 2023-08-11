@@ -86,7 +86,7 @@ int _strlen(char *s)
 int main(int argc, char *argv[])
 {
 	char *num1, *num2, *product;
-	int i, j, len1, len2, *result, len_result, prod, sum;
+	int i, j, len1, len2, *result, len_result, prod, sum, print_started;
 
 	num1 = argv[1], num2 = argv[2];
 	if (argc != 3 || !_isdigit(num1) || !_isdigit(num2))
@@ -116,20 +116,24 @@ int main(int argc, char *argv[])
 		len_result--;
 	}
 	product = (char *)malloc(len_result + 1);
+	print_started = 0;
 
 	for (i = 0; i < len_result; i++)
 	{
-    		if (product[i] != '0') 
+    		if (result[i] != '0') 
+		{
+			print_started = 1;
+		}
+		if (print_started)
 		{
 			product[i] = result[i] + '0';
-			while (i < len_result) 
-			{
-            			_putchar(product[i]);
-            			i++;
-        		}
-    		}
+			_putchar(product[i]);
+		}
 	}
-
+	if (!print_started)
+	{
+		_putchar('0');
+	}
 	_putchar('\n');
 
 	free(result);
