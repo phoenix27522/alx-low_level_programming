@@ -11,7 +11,7 @@ void print_opcodes(char *ptr, size_t size)
 
 	for (i = 0; i < size; i++)
 	{
-		printf("%02x ", ptr[i]);
+		printf("%.2hhx ", ptr[i]);
 		if (i < size - 1)
 			printf(" ");
 	}
@@ -52,4 +52,3 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
