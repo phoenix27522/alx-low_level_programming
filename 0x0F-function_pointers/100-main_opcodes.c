@@ -24,7 +24,8 @@ void print_opcodes(char *ptr, size_t size)
  *
  * Return: always O
  */
-int main(int argc, char *argv[])
+/*int main(int argc, char *argv[])*/
+int main(int argc, char **argv)
 {
 	size_t bytes_to_print;
 	char *main_address;
