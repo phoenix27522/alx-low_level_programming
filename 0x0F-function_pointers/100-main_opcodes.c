@@ -11,11 +11,14 @@ void print_opcodes(char *ptr, size_t size)
 
 	for (i = 0; i < size; i++)
 	{
-		printf("%.2hhx ", ptr[i]);
+		/*printf("%.2hhx ", ptr[i]);*/
 		if (i < size - 1)
-			printf(" ");
+		{
+			printf("%02hhx\n", ptr[i]);
+		}
+		printf("%02hhx ", ptr[i]);
 	}
-	printf("\n");
+	/*printf("\n");*/
 }
 /**
  * main - prints the opcodes of its own main function
