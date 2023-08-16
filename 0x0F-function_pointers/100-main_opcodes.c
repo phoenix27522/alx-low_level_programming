@@ -8,15 +8,15 @@
  */
 void print_opcodes(char *ptr, size_t size)
 {
-    	size_t i;
+	size_t i;
 
-    	for (i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
-        	printf("%02x ", ptr[i]);
+		printf("%02x ", ptr[i]);
 		if (i < size - 1)
 			printf(" ");
-    	}
-    	printf("\n");
+	}
+	printf("\n");
 }
 /**
  * main - prints the opcodes of its own main function
@@ -32,25 +32,25 @@ int main(int argc, char *argv[])
 	size_t main_size;
 	size_t bytes_to_print;
 
-    	if (argc != 2) 
+	if (argc != 2)
 	{
 		printf("Error\n");
-        	return 1;
-    	}
+		exit (1);
+	}
 
-    	num_bytes = atoi(argv[1]);
-    	if (num_bytes <= 0) 
+	num_bytes = atoi(argv[1]);
+
+	if (num_bytes <= 0)
 	{
 		printf("Error\n");
-        	return 2;
-    	}
+		exit (2);
+	}
 
-    	main_address = (void *)main;
-    	main_size = (size_t)print_opcodes - (size_t)main;
+	main_address = (void *)main;
+	main_size = (size_t)print_opcodes - (size_t)main;
+	bytes_to_print = num_bytes < main_size ? num_bytes : main_size;
+	print_opcodes(main_address, bytes_to_print);
 
-    	bytes_to_print = num_bytes < main_size ? num_bytes : main_size;
-    	print_opcodes(main_address, bytes_to_print);
-
-    	return 0;
+	return (0);
 }
 
