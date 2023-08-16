@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
 		exit(2);
 	}
 
-	main_address = (char *)&main;
-	print_opcodes(main_address, bytes_to_print);
+	/*main_address = (char *)&main;*/
+	print_opcodes((char *)&main, bytes_to_print);
 
 	return (0);
 }
