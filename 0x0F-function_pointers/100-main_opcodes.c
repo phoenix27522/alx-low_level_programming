@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 
 	bytes_to_print = atoi(argv[1]);
 
-	if (bytes_to_print <= 0)
+	if (bytes_to_print < 0)
 	{
 		printf("Error\n");
 		exit(2);
