@@ -26,10 +26,8 @@ void print_opcodes(char *ptr, size_t size)
  */
 int main(int argc, char *argv[])
 {
-	void *main_address;
-	int num_bytes;
-	size_t main_size;
 	size_t bytes_to_print;
+	char *main_address;
 
 	if (argc != 2)
 	{
@@ -37,17 +35,15 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	num_bytes = atoi(argv[1]);
+	bytes_to_print = atoi(argv[1]);
 
-	if (num_bytes <= 0)
+	if (bytes_to_print <= 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
 
-	main_address = (void *)main;
-	main_size = (size_t)print_opcodes - (size_t)main;
-	bytes_to_print = num_bytes < main_size ? num_bytes : main_size;
+	main_address = (char *)&main;
 	print_opcodes(main_address, bytes_to_print);
 
 	return (0);
