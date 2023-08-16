@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 /**
  * print_opcodes - prints opcode in hexadecimal
  * @ptr: adress
@@ -35,7 +34,7 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		printf("Error\n");
-		exit (1);
+		exit(1);
 	}
 
 	num_bytes = atoi(argv[1]);
@@ -43,7 +42,7 @@ int main(int argc, char *argv[])
 	if (num_bytes <= 0)
 	{
 		printf("Error\n");
-		exit (2);
+		exit(2);
 	}
 
 	main_address = (void *)main;
