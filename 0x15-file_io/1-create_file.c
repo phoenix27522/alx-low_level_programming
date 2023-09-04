@@ -26,12 +26,12 @@ int create_file(const char *filename, char *text_content)
 			len++;
 			text_content++;
 		}
-		filewrite = write(fileopen, text_content, len);
-		if (filewrite == -1)
-		{
-			close(fileopen);
-			return (-1);
-		}
+	}
+	filewrite = write(fileopen, text_content, len);
+	if (filewrite == -1)
+	{
+		close(fileopen);
+		return (-1);
 	}
 	close(fileopen);
 	return (1);
